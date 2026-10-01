@@ -154,11 +154,16 @@ export const LicenseKeysBenefitForm = () => {
           <FormField
             control={control}
             name="properties.activations.limit"
+            rules={{
+              min: 1,
+              required: 'This field is required',
+            }}
             render={({ field }) => {
+              const value = field.value || ''
               return (
                 <FormItem>
                   <FormControl>
-                    <Input {...field} />
+                    <Input type="number" min={1} {...{ ...field, value }} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
